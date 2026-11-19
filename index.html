@@ -4,122 +4,140 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zawaher Bin Asim – Embedded Firmware Engineer, Computer Architecture</title>
-<meta name="description" content="Zawaher Bin Asim: embedded firmware engineer working on RISC-V SoCs. Interested in computer architecture, vector processing and multi-core verification.">
+<meta name="description" content="Zawaher Bin Asim: embedded firmware engineer working on RISC-V SoCs. Work in computer architecture, vector processing and multi-core verification.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f6f8fa; --surface:#ffffff; --ink:#0f1b26; --muted:#5a6978; --line:#dbe2e9;
-  --accent:#0b7a8f; --accent2:#5b4bdb; --accent-soft:#e3f1f4; --hero1:#0d2a3a; --hero2:#16405a;
+  --bg:#ffffff; --alt:#f3f6ff; --surface:#ffffff; --ink:#16203a; --muted:#56627d; --line:#dfe5f3;
+  --accent:#2f4fd8; --accent-soft:#e8edff; --teal:#0e9fa8; --teal-soft:#e0f6f7; --warm:#f08a3c;
+  --grad:linear-gradient(120deg,#2f4fd8 0%,#7a4fe0 55%,#0e9fa8 100%);
+  --shadow:0 1px 2px rgba(22,32,58,.06),0 8px 24px rgba(47,79,216,.08);
+  --shadow-hover:0 2px 4px rgba(22,32,58,.08),0 16px 36px rgba(47,79,216,.18);
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
   --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
-  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){
-  :root{--bg:#0b1218; --surface:#131d27; --ink:#e8eff5; --muted:#97a8b8; --line:#243342;
-        --accent:#4fc3da; --accent2:#9a8dff; --accent-soft:#16303a; --hero1:#0b1c27; --hero2:#10303f;}
+  :root{--bg:#0d1120; --alt:#121830; --surface:#161d38; --ink:#e8ecfa; --muted:#a2acc9; --line:#263056;
+        --accent:#8fa6ff; --accent-soft:#1c2650; --teal:#4fd1d9; --teal-soft:#123a45; --warm:#ffb067;
+        --grad:linear-gradient(120deg,#8fa6ff 0%,#b79cff 55%,#4fd1d9 100%);
+        --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3);
+        --shadow-hover:0 2px 4px rgba(0,0,0,.4),0 16px 36px rgba(79,110,255,.25);}
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
-.container{max-width:1020px;margin:0 auto;padding:0 22px}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
 
-/* top bar */
-.topbar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
 .topbar .container{display:flex;align-items:center;justify-content:space-between;height:56px}
-.brand{font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
-.topbar nav{display:flex;gap:4px 22px;font-size:.9rem;overflow-x:auto}
-.topbar nav a{color:var(--muted);text-decoration:none;white-space:nowrap}
+.brand{font:600 1.05rem var(--serif);color:var(--ink);text-decoration:none}
+.topbar nav{display:flex;gap:22px;font-size:.9rem}
+.topbar nav a{color:var(--muted);text-decoration:none}
 .topbar nav a:hover{color:var(--accent)}
 
-/* hero */
-.hero{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#eaf3f8;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;opacity:.18;
-  background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:44px 44px;
-  mask-image:radial-gradient(ellipse at 80% 20%,#000,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 80% 20%,#000,transparent 70%)}
-.hero .container{position:relative;padding-top:84px;padding-bottom:84px}
-.eyebrow{font:500 .85rem var(--mono);color:#7fd6e8;letter-spacing:.04em;margin:0 0 14px}
-h1{font-size:clamp(2.4rem,7vw,3.9rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.03em;font-weight:700}
-.lead{font-size:1.2rem;max-width:620px;color:#c4d6e2;margin:0 0 30px}
+.hero{padding:84px 0 76px;position:relative;overflow:hidden;
+  background:
+    radial-gradient(600px 320px at 85% 10%,rgba(122,79,224,.20),transparent 70%),
+    radial-gradient(520px 300px at 10% 90%,rgba(14,159,168,.18),transparent 70%),
+    radial-gradient(500px 260px at 60% 100%,rgba(47,79,216,.14),transparent 70%),
+    var(--alt)}
+.hero .container{display:grid;grid-template-columns:1fr 260px;gap:56px;align-items:center;position:relative}
+h1{font:600 clamp(2.4rem,6.5vw,3.7rem)/1.06 var(--serif);margin:0 0 14px;letter-spacing:-.015em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;padding-bottom:4px}
+.role{font-size:1.2rem;color:var(--ink);opacity:.82;margin:0 0 20px;max-width:540px}
+.skills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 30px}
+.skills li{font-size:.84rem;font-weight:500;padding:4px 12px;border-radius:999px;background:var(--surface);color:var(--accent);border:1px solid var(--line);box-shadow:0 1px 2px rgba(22,32,58,.05)}
+.skills li:nth-child(3n+2){color:var(--teal)}
+.skills li:nth-child(3n){color:#7a4fe0}
+@media (prefers-color-scheme:dark){.skills li:nth-child(3n){color:#b79cff}}
 .btns{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-block;padding:11px 20px;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid transparent}
-.btn.primary{background:#7fd6e8;color:#06222d}
-.btn.primary:hover{background:#a5e5f2}
-.btn.ghost{border-color:#4d6d80;color:#eaf3f8}
-.btn.ghost:hover{border-color:#7fd6e8;color:#7fd6e8}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 0;padding:0;list-style:none}
-.chips li{font:500 .8rem var(--mono);padding:4px 11px;border:1px solid #3c5a6c;border-radius:999px;color:#b9d0de}
+.btn{position:relative;overflow:hidden;display:inline-block;padding:11px 22px;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--accent);transition:transform .2s,box-shadow .2s}
+.btn.primary{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(47,79,216,.35)}
+.btn.primary::after{content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn.primary:hover::after{left:130%}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{color:var(--accent);background:var(--surface)}
+.btn.ghost:hover{background:var(--accent-soft);box-shadow:var(--shadow)}
+.portrait{margin:0;padding:5px;border-radius:50%;background:var(--grad);box-shadow:0 14px 40px rgba(47,79,216,.30)}
+.portrait img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:50%;display:block;border:4px solid var(--bg)}
 
-/* sections */
-section{padding:68px 0 8px}
-.kicker{font:500 .8rem var(--mono);color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px}
-h2{font-size:clamp(1.6rem,4vw,2.1rem);line-height:1.15;margin:0 0 24px;letter-spacing:-.02em}
-h3{font-size:1.15rem;line-height:1.3;margin:0 0 6px}
+section{padding:68px 0}
+section.alt{background:var(--alt)}
+h2{font:600 1.8rem/1.2 var(--serif);margin:0 0 28px;letter-spacing:-.005em;position:relative;padding-bottom:14px}
+h2::after{content:"";position:absolute;left:0;bottom:0;width:56px;height:4px;border-radius:4px;background:var(--grad)}
+h3{font-size:1.05rem;line-height:1.35;margin:0 0 4px;font-weight:600}
 p{margin:0 0 14px}
 .meta{color:var(--muted);font-size:.92rem}
-.about{display:grid;grid-template-columns:1.5fr 1fr;gap:36px}
-.facts{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;align-self:start}
-.facts dl{margin:0}.facts dt{font:500 .75rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:12px}
+.about{display:grid;grid-template-columns:1.6fr 1fr;gap:48px}
+.facts dl{margin:0}.facts dt{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:14px}
 .facts dt:first-child{margin-top:0}.facts dd{margin:2px 0 0;font-weight:500}
 
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
-.card ul{margin:10px 0 0;padding-left:1.15em}.card li{margin-bottom:5px}
-.tag{display:inline-block;font:500 .75rem var(--mono);color:var(--accent);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin:0 6px 6px 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:var(--shadow);position:relative;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.card p{margin:0}
+.grid2 .card{border-top:4px solid var(--accent)}
+.grid2 .card:nth-child(2){border-top-color:var(--teal)}
+.grid2 .card:nth-child(3){border-top-color:#7a4fe0}
+.grid2 .card:nth-child(4){border-top-color:var(--warm)}
+.grid2 .card h3{color:var(--ink)}
 
-/* projects */
-.project{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:26px;overflow:hidden}
-.project .head{padding:24px 26px 6px}
-.project .body{padding:0 26px 24px;display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:start}
-.project.reverse .body{grid-template-columns:1fr 1.05fr}
+.project{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:26px;box-shadow:var(--shadow);overflow:hidden;position:relative;transition:transform .25s,box-shadow .25s}
+.project::before{content:"";display:block;height:5px;background:var(--grad)}
+.project:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.project .head{padding:22px 26px 0}
+.project .body{padding:8px 26px 24px;display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:start}
+.project.reverse .body{grid-template-columns:1.05fr 1fr}
 .project.reverse .diagram{order:-1}
-.project.featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
-.badge{font:500 .72rem var(--mono);color:#fff;background:linear-gradient(90deg,var(--accent),var(--accent2));padding:3px 10px;border-radius:999px;margin-bottom:10px;display:inline-block}
 .project ul{padding-left:1.15em;margin:8px 0 14px}.project li{margin-bottom:5px}
-.links a{font-weight:600;font-size:.92rem;margin-right:16px}
-.diagram{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+.label{display:inline-block;font-size:.72rem;color:#fff;background:var(--grad);padding:3px 11px;border-radius:999px;text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin:0 0 8px}
+.facts{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:12px;padding:20px 22px;box-shadow:var(--shadow)}
+.job{border-left:3px solid transparent;border-image:var(--grad) 1;padding-left:22px}
+.edu{border-top:4px solid var(--warm)}
+.links a{font-weight:500;font-size:.92rem;margin-right:16px}
+.diagram{background:linear-gradient(160deg,var(--accent-soft),var(--teal-soft));border:1px solid var(--line);border-radius:10px;padding:12px;margin:0}
 .diagram svg{width:100%;height:auto;display:block}
 .diagram figcaption{color:var(--muted);font-size:.82rem;margin-top:6px}
-figure{margin:0}
-/* svg classes */
-.bx{fill:var(--surface);stroke:var(--ink);stroke-width:1.4}
-.bx.a{stroke:var(--accent);fill:var(--accent-soft)}
-.bx.b{stroke:var(--accent2)}
-.ln{stroke:var(--muted);stroke-width:1.5;fill:none;marker-end:url(#ar)}
+.subhead{font:600 1.2rem var(--serif);margin:40px 0 16px;padding-top:8px}
+.list-plain{padding-left:1.15em;margin:6px 0 0}.list-plain li{margin-bottom:5px}
+.bx{fill:var(--surface);stroke:var(--ink);stroke-width:1.3}
+.bx.a{stroke:var(--accent);stroke-width:1.8;fill:var(--surface)}
+.bx.b{stroke:var(--teal);stroke-width:1.8;fill:var(--surface)}
+.ln{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#ar)}
 .ln.d{stroke-dasharray:4 3}
 .tx{font:600 12.5px var(--sans);fill:var(--ink);text-anchor:middle}
 .ts{font:400 10.5px var(--sans);fill:var(--muted);text-anchor:middle}
-.tm{font:500 10px var(--mono);fill:var(--muted);text-anchor:middle}
-#ar path{fill:var(--muted)}
+.tm{font:500 10px var(--sans);fill:var(--muted);text-anchor:middle}
+#ar path{fill:var(--accent)}
 
-/* timeline */
-.tl{border-left:2px solid var(--line);margin-left:6px;padding-left:24px}
-.tl .item{position:relative;margin-bottom:28px}
-.tl .item::before{content:"";position:absolute;left:-31px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
-.tl ul{padding-left:1.15em;margin:8px 0 0}.tl li{margin-bottom:6px}
+.job ul{padding-left:1.15em;margin:10px 0 0}.job li{margin-bottom:6px}
 .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+.edu{display:flex;gap:20px;align-items:center}
+.edu img{width:72px;height:72px;object-fit:contain;flex:none}
 
-.contact{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#eaf3f8;border-radius:16px;padding:40px 34px;margin-top:8px}
-.contact h2{margin-bottom:10px}.contact p{color:#c4d6e2;max-width:560px}
-.contact a.btn{margin:6px 10px 0 0}
-footer{padding:36px 0 56px;color:var(--muted);font-size:.88rem;text-align:center}
+.contact-list{list-style:none;padding:0;margin:18px 0 0}
+.contact-list li{margin-bottom:8px}
+.contact-list span{display:inline-block;min-width:84px;color:var(--muted);font-size:.9rem}
+footer{padding:28px 0 48px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
+
 @media (max-width:820px){
-  .about,.project .body,.project.reverse .body{grid-template-columns:1fr}
+  .hero .container,.about,.project .body,.project.reverse .body{grid-template-columns:1fr}
   .project.reverse .diagram{order:0}
-  .hero .container{padding-top:56px;padding-bottom:56px}
+  .portrait{order:-1;max-width:200px}
+  .hero{padding:40px 0}
   .topbar nav{display:none}
 }
-@media print{.topbar{display:none}.hero{background:#fff;color:#000}.project,.card{break-inside:avoid}}
+@media print{.topbar{display:none}.project,.card{break-inside:avoid}}
 </style>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z"/></marker>
-  </defs>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z"/></marker></defs>
 </svg>
 
 <div class="topbar">
@@ -138,244 +156,240 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.88rem;text-align:center
 
 <header class="hero" id="top">
   <div class="container">
-    <p class="eyebrow">// firmware · computer architecture · RISC-V</p>
-    <h1>Zawaher Bin Asim</h1>
-    <p class="lead">Embedded firmware engineer building and validating software for custom RISC-V SoCs. Working towards a PhD in computer architecture.</p>
-    <div class="btns">
-      <a class="btn primary" href="#contact">Get in touch</a>
-      <a class="btn ghost" href="Zawaher_Bin_Asim_Resume.pdf">Download CV</a>
-      <a class="btn ghost" href="https://github.com/Zawaher-Bin-Asim">GitHub</a>
+    <div>
+      <h1>Zawaher Bin Asim</h1>
+      <p class="role">Embedded firmware engineer working on RISC-V SoCs, with a focus on computer architecture and hardware–software co-design.</p>
+      <ul class="skills" aria-label="Core skills"><li>SystemVerilog</li><li>C / C++</li><li>Python</li><li>Verilator</li><li>Cocotb</li><li>RISC-V</li><li>PCIe</li></ul>
+      <div class="btns">
+        <a class="btn primary" href="#contact">Contact</a>
+        <a class="btn ghost" href="Zawaher_Bin_Asim_Resume.pdf">Download CV</a>
+        <a class="btn ghost" href="https://github.com/Zawaher-Bin-Asim">GitHub</a>
+      </div>
     </div>
-    <ul class="chips" aria-label="Core skills">
-      <li>SystemVerilog</li><li>C / C++</li><li>Python</li><li>Verilator</li><li>Cocotb</li><li>RISC-V</li><li>PCIe</li>
-    </ul>
+    <!-- Put your photo in the same folder as index.html and name it photo.jpg (square crop works best). -->
+    <figure class="portrait">
+      <img src="photo.jpg" alt="Portrait of Zawaher Bin Asim" width="500" height="500" onerror="this.closest('figure').style.display='none'">
+    </figure>
   </div>
 </header>
 
-<main class="container">
+<main>
 
-<section id="about">
-  <p class="kicker">About</p>
-  <h2>Where hardware meets software</h2>
-  <div class="about">
-    <div>
-      <p>I am an embedded firmware engineer at Xcelerium in Lahore, writing and validating firmware for custom RISC-V SoCs. My work covers SDK drivers, PCIe and DMA firmware, and a bare-metal multi-core test suite for interrupts, cache coherency and atomics.</p>
-      <p>Before that I designed and verified RTL at university, including a vector co-processor for my final year project. I have booted Linux and Zephyr on custom RISC-V cores, and I enjoy the point where hardware and software meet.</p>
-      <p>I am looking for a PhD where I can work on processor and memory-system design.</p>
+<section id="about" class="alt">
+  <div class="container">
+    <h2>About</h2>
+    <div class="about">
+      <div>
+        <p>I am an embedded firmware engineer at Xcelerium in Lahore, writing and validating firmware for custom RISC-V SoCs. My work covers SDK drivers, PCIe and DMA firmware, and a bare-metal multi-core test suite for interrupts, cache coherency and atomics.</p>
+        <p>Before that I designed and verified RTL at university, including a vector co-processor for my final year project. I have booted Linux and Zephyr on custom RISC-V cores, and I like working where hardware and software meet.</p>
+        <p>My main interests are processor and memory-system design, and I am open to research collaborations in these areas.</p>
+      </div>
+      <aside class="facts" aria-label="Quick facts">
+        <dl>
+          <dt>Current role</dt><dd>Associate Embedded Systems Engineer, Xcelerium</dd>
+          <dt>Education</dt><dd>BE Electrical &amp; Electronics, UET Lahore</dd>
+          <dt>Focus</dt><dd>Processor and memory-system design</dd>
+          <dt>Location</dt><dd>Lahore, Pakistan</dd>
+        </dl>
+      </aside>
     </div>
-    <aside class="facts" aria-label="Quick facts">
-      <dl>
-        <dt>Current role</dt><dd>Associate Embedded Systems Engineer, Xcelerium</dd>
-        <dt>Education</dt><dd>BE Electrical &amp; Electronics, UET Lahore</dd>
-        <dt>Looking for</dt><dd>PhD in computer architecture</dd>
-        <dt>Based in</dt><dd>Lahore, Pakistan</dd>
-      </dl>
-    </aside>
   </div>
 </section>
 
 <section id="research">
-  <p class="kicker">Research</p>
-  <h2>Interests</h2>
-  <div class="grid2">
-    <div class="card"><h3>Vector processing</h3><p class="meta" style="margin:0">Memory-intensive vector operations and the load/store path that feeds them.</p></div>
-    <div class="card"><h3>RISC-V microarchitecture</h3><p class="meta" style="margin:0">Pipelines, hazards, CSRs and interrupt handling in custom cores.</p></div>
-    <div class="card"><h3>Multi-core cache coherency</h3><p class="meta" style="margin:0">Atomics, locking and coherency behaviour seen on real multi-core silicon.</p></div>
-    <div class="card"><h3>Memory-system &amp; post-silicon validation</h3><p class="meta" style="margin:0">Bare-metal test suites that stress interrupts, peripherals and shared memory.</p></div>
+  <div class="container">
+    <h2>Research interests</h2>
+    <div class="grid2">
+      <div class="card"><h3>Vector processing</h3><p class="meta">Memory-intensive vector operations and the load/store path that feeds them.</p></div>
+      <div class="card"><h3>RISC-V microarchitecture</h3><p class="meta">Pipelines, hazards, CSRs and interrupt handling in custom cores.</p></div>
+      <div class="card"><h3>Multi-core cache coherency</h3><p class="meta">Atomics, locking and coherency behaviour on real multi-core silicon.</p></div>
+      <div class="card"><h3>Memory-system and post-silicon validation</h3><p class="meta">Bare-metal test suites that stress interrupts, peripherals and shared memory.</p></div>
+    </div>
   </div>
 </section>
 
-<section id="projects">
-  <p class="kicker">Projects</p>
-  <h2>Selected work</h2>
+<section id="projects" class="alt">
+  <div class="container">
+    <h2>Projects</h2>
 
-  <!-- 1. Vector co-processor -->
-  <article class="project featured">
-    <div class="head">
-      <span class="badge">Final year project</span>
-      <div class="row"><h3>Vector Co-Processor with a custom VLSU</h3><span class="meta">SystemVerilog · Verilator</span></div>
-    </div>
-    <div class="body">
-      <div>
-        <p>A fully functional Vector Load/Store Unit (VLSU) that works with a scalar processor to handle memory-intensive vector operations over AXI4.</p>
-        <ul>
-          <li>Supports unit-stride, strided and indexed memory access.</li>
-          <li>CSR-based configuration of vector length and type (VLEN, LMUL, vl, vtype).</li>
-          <li>Ready and acknowledge handshakes between the scalar core and the co-processor.</li>
-          <li>Checked through waveform simulation of vector load and store instructions.</li>
-        </ul>
-        <p class="links"><a href="https://github.com/Fazail333/Vector-Co-processor">View on GitHub →</a></p>
+    <article class="project">
+      <div class="head">
+        <p class="label">Final year project</p>
+        <div class="row"><h3>Vector co-processor with a custom VLSU</h3><span class="meta">SystemVerilog · Verilator</span></div>
       </div>
-      <figure class="diagram">
-        <svg viewBox="0 0 520 300" role="img" aria-labelledby="d1t d1d">
-          <title id="d1t">Vector co-processor block diagram</title>
-          <desc id="d1d">A scalar processor sends vector instructions and CSR values to a vector co-processor, with ready and acknowledge handshakes. Inside, a VLSU with unit-stride, strided and indexed access modes connects to memory.</desc>
-          <rect class="bx" x="10" y="100" width="110" height="90" rx="8"/>
-          <text class="tx" x="65" y="142">Scalar</text><text class="tx" x="65" y="158">processor</text>
-          <rect class="bx a" x="190" y="20" width="200" height="260" rx="10"/>
-          <text class="tx" x="290" y="42">Vector co-processor</text>
-          <rect class="bx" x="206" y="58" width="168" height="44" rx="6"/>
-          <text class="tx" x="290" y="76">CSRs &amp; decode</text><text class="tm" x="290" y="91">VLEN · LMUL · vl · vtype</text>
-          <rect class="bx b" x="206" y="122" width="168" height="144" rx="6"/>
-          <text class="tx" x="290" y="142">VLSU</text>
-          <rect class="bx" x="220" y="154" width="140" height="26" rx="4"/><text class="ts" x="290" y="171">Unit-stride</text>
-          <rect class="bx" x="220" y="186" width="140" height="26" rx="4"/><text class="ts" x="290" y="203">Strided</text>
-          <rect class="bx" x="220" y="218" width="140" height="26" rx="4"/><text class="ts" x="290" y="235">Indexed</text>
-          <rect class="bx" x="440" y="100" width="70" height="90" rx="8"/>
-          <text class="tx" x="475" y="150">Memory</text>
-          <path class="ln" d="M120 130H190"/><text class="tm" x="155" y="122">instr</text>
-          <path class="ln d" d="M190 168H120"/><text class="tm" x="155" y="184">ready/ack</text>
-          <path class="ln" d="M374 145H440"/><path class="ln" d="M440 170H374"/>
-          <text class="tm" x="407" y="136">AXI4</text>
-        </svg>
-        <figcaption>Simplified block diagram, based on the project repository.</figcaption>
-      </figure>
-    </div>
-  </article>
-
-  <!-- 2. Pipeline -->
-  <article class="project reverse">
-    <div class="head"><div class="row"><h3>5-stage pipelined RISC-V scalar processor</h3><span class="meta">SystemVerilog</span></div></div>
-    <div class="body">
-      <div>
-        <p>A scalar RISC-V core with the full set of R, I, S, B, U and J-type instructions.</p>
-        <ul>
-          <li>Hazard detection, forwarding and load-use stalls.</li>
-          <li>UART with interrupt-based transfers.</li>
-          <li>CSR-based exception unit for external and timer interrupts.</li>
-        </ul>
-        <p class="links"><a href="https://github.com/Zawaher-Bin-Asim/RISCV-Processor">View on GitHub →</a></p>
+      <div class="body">
+        <div>
+          <p>A fully functional Vector Load/Store Unit (VLSU) that works with a scalar processor to handle memory-intensive vector operations over AXI4.</p>
+          <ul>
+            <li>Supports unit-stride, strided and indexed memory access.</li>
+            <li>CSR-based configuration of vector length and type (VLEN, LMUL, vl, vtype).</li>
+            <li>Ready and acknowledge handshakes between the scalar core and the co-processor.</li>
+            <li>Checked through waveform simulation of vector load and store instructions.</li>
+          </ul>
+          <p class="links"><a href="https://github.com/Fazail333/Vector-Co-processor">View on GitHub →</a></p>
+        </div>
+        <figure class="diagram">
+          <svg viewBox="0 0 520 300" role="img" aria-labelledby="d1t d1d">
+            <title id="d1t">Vector co-processor block diagram</title>
+            <desc id="d1d">A scalar processor sends vector instructions and CSR values to a vector co-processor, with ready and acknowledge handshakes. Inside, a VLSU with unit-stride, strided and indexed access modes connects to memory.</desc>
+            <rect class="bx" x="10" y="100" width="110" height="90" rx="6"/>
+            <text class="tx" x="65" y="142">Scalar</text><text class="tx" x="65" y="158">processor</text>
+            <rect class="bx a" x="190" y="20" width="200" height="260" rx="8"/>
+            <text class="tx" x="290" y="42">Vector co-processor</text>
+            <rect class="bx" x="206" y="58" width="168" height="44" rx="4"/>
+            <text class="tx" x="290" y="76">CSRs &amp; decode</text><text class="tm" x="290" y="91">VLEN · LMUL · vl · vtype</text>
+            <rect class="bx b" x="206" y="122" width="168" height="144" rx="4"/>
+            <text class="tx" x="290" y="142">VLSU</text>
+            <rect class="bx" x="220" y="154" width="140" height="26" rx="3"/><text class="ts" x="290" y="171">Unit-stride</text>
+            <rect class="bx" x="220" y="186" width="140" height="26" rx="3"/><text class="ts" x="290" y="203">Strided</text>
+            <rect class="bx" x="220" y="218" width="140" height="26" rx="3"/><text class="ts" x="290" y="235">Indexed</text>
+            <rect class="bx" x="440" y="100" width="70" height="90" rx="6"/>
+            <text class="tx" x="475" y="150">Memory</text>
+            <path class="ln" d="M120 130H190"/><text class="tm" x="155" y="122">instr</text>
+            <path class="ln d" d="M190 168H120"/><text class="tm" x="155" y="184">ready/ack</text>
+            <path class="ln" d="M374 145H440"/><path class="ln" d="M440 170H374"/>
+            <text class="tm" x="407" y="136">AXI4</text>
+          </svg>
+          <figcaption>Simplified block diagram, based on the project repository.</figcaption>
+        </figure>
       </div>
-      <figure class="diagram">
-        <svg viewBox="0 0 520 220" role="img" aria-labelledby="d2t d2d">
-          <title id="d2t">Five-stage pipeline</title>
-          <desc id="d2d">Fetch, decode, execute, memory and write-back stages in sequence. A forwarding path returns results to execute, a hazard unit controls stalls, and a CSR and exception unit handles interrupts.</desc>
-          <g>
-            <rect class="bx a" x="8" y="50" width="84" height="56" rx="6"/><text class="tx" x="50" y="76">IF</text><text class="ts" x="50" y="92">Fetch</text>
-            <rect class="bx a" x="112" y="50" width="84" height="56" rx="6"/><text class="tx" x="154" y="76">ID</text><text class="ts" x="154" y="92">Decode</text>
-            <rect class="bx a" x="216" y="50" width="84" height="56" rx="6"/><text class="tx" x="258" y="76">EX</text><text class="ts" x="258" y="92">Execute</text>
-            <rect class="bx a" x="320" y="50" width="84" height="56" rx="6"/><text class="tx" x="362" y="76">MEM</text><text class="ts" x="362" y="92">Memory</text>
-            <rect class="bx a" x="424" y="50" width="84" height="56" rx="6"/><text class="tx" x="466" y="76">WB</text><text class="ts" x="466" y="92">Write-back</text>
-          </g>
-          <path class="ln" d="M92 78H112"/><path class="ln" d="M196 78H216"/><path class="ln" d="M300 78H320"/><path class="ln" d="M404 78H424"/>
-          <path class="ln d" d="M362 50V28H258V50"/><text class="tm" x="310" y="22">forwarding</text>
-          <rect class="bx b" x="112" y="140" width="188" height="36" rx="6"/><text class="tx" x="206" y="163">Hazard unit · stalls</text>
-          <path class="ln d" d="M206 140V106"/>
-          <rect class="bx b" x="330" y="140" width="178" height="36" rx="6"/><text class="tx" x="419" y="163">CSR &amp; exception unit</text>
-          <path class="ln d" d="M419 140V106"/>
-          <text class="tm" x="260" y="205">UART · timer &amp; external interrupts</text>
-        </svg>
-        <figcaption>Pipeline stages with forwarding, stalls and interrupt handling.</figcaption>
-      </figure>
-    </div>
-  </article>
+    </article>
 
-  <!-- 3. AXI cache -->
-  <article class="project">
-    <div class="head"><div class="row"><h3>AXI4-Lite cache controller</h3><span class="meta">SystemVerilog</span></div></div>
-    <div class="body">
-      <div>
-        <p>An AXI4-Lite compliant cache controller, verified in a testbench against a memory model.</p>
-        <p class="links"><a href="https://github.com/Zawaher-Bin-Asim/Cache-Controller">View on GitHub →</a></p>
+    <article class="project reverse">
+      <div class="head"><div class="row"><h3>5-stage pipelined RISC-V scalar processor</h3><span class="meta">SystemVerilog</span></div></div>
+      <div class="body">
+        <div>
+          <p>A scalar RISC-V core supporting R, I, S, B, U and J-type instructions.</p>
+          <ul>
+            <li>Hazard detection, forwarding and load-use stalls.</li>
+            <li>UART with interrupt-based transfers.</li>
+            <li>CSR-based exception unit for external and timer interrupts.</li>
+          </ul>
+          <p class="links"><a href="https://github.com/Zawaher-Bin-Asim/RISCV-Processor">View on GitHub →</a></p>
+        </div>
+        <figure class="diagram">
+          <svg viewBox="0 0 520 220" role="img" aria-labelledby="d2t d2d">
+            <title id="d2t">Five-stage pipeline</title>
+            <desc id="d2d">Fetch, decode, execute, memory and write-back stages in sequence. A forwarding path returns results to execute, a hazard unit controls stalls, and a CSR and exception unit handles interrupts.</desc>
+            <rect class="bx a" x="8" y="50" width="84" height="56" rx="5"/><text class="tx" x="50" y="76">IF</text><text class="ts" x="50" y="92">Fetch</text>
+            <rect class="bx a" x="112" y="50" width="84" height="56" rx="5"/><text class="tx" x="154" y="76">ID</text><text class="ts" x="154" y="92">Decode</text>
+            <rect class="bx a" x="216" y="50" width="84" height="56" rx="5"/><text class="tx" x="258" y="76">EX</text><text class="ts" x="258" y="92">Execute</text>
+            <rect class="bx a" x="320" y="50" width="84" height="56" rx="5"/><text class="tx" x="362" y="76">MEM</text><text class="ts" x="362" y="92">Memory</text>
+            <rect class="bx a" x="424" y="50" width="84" height="56" rx="5"/><text class="tx" x="466" y="76">WB</text><text class="ts" x="466" y="92">Write-back</text>
+            <path class="ln" d="M92 78H112"/><path class="ln" d="M196 78H216"/><path class="ln" d="M300 78H320"/><path class="ln" d="M404 78H424"/>
+            <path class="ln d" d="M362 50V28H258V50"/><text class="tm" x="310" y="22">forwarding</text>
+            <rect class="bx b" x="112" y="140" width="188" height="36" rx="5"/><text class="tx" x="206" y="163">Hazard unit · stalls</text>
+            <path class="ln d" d="M206 140V106"/>
+            <rect class="bx b" x="330" y="140" width="178" height="36" rx="5"/><text class="tx" x="419" y="163">CSR &amp; exception unit</text>
+            <path class="ln d" d="M419 140V106"/>
+            <text class="tm" x="260" y="205">UART · timer &amp; external interrupts</text>
+          </svg>
+          <figcaption>Pipeline stages with forwarding, stalls and interrupt handling.</figcaption>
+        </figure>
       </div>
-      <figure class="diagram">
-        <svg viewBox="0 0 520 130" role="img" aria-labelledby="d3t d3d">
-          <title id="d3t">Cache controller setup</title>
-          <desc id="d3d">A processor-side requester talks to the cache controller, which talks over AXI4-Lite to a memory model in the testbench.</desc>
-          <rect class="bx" x="8" y="35" width="110" height="60" rx="8"/><text class="tx" x="63" y="70">Requester</text>
-          <rect class="bx a" x="190" y="25" width="140" height="80" rx="8"/><text class="tx" x="260" y="62">Cache</text><text class="tx" x="260" y="78">controller</text>
-          <rect class="bx" x="402" y="35" width="110" height="60" rx="8"/><text class="tx" x="457" y="62">Memory model</text><text class="ts" x="457" y="78">testbench</text>
-          <path class="ln" d="M118 65H190"/><path class="ln" d="M330 65H402"/><text class="tm" x="366" y="56">AXI4-Lite</text>
-        </svg>
-        <figcaption>Verification setup.</figcaption>
-      </figure>
-    </div>
-  </article>
+    </article>
 
-  <!-- 4. Arithmetic -->
-  <article class="project">
-    <div class="head"><div class="row"><h3>Arithmetic and peripheral modules</h3><span class="meta">SystemVerilog · C++ · Python</span></div></div>
-    <div class="body" style="grid-template-columns:1fr">
-      <div>
-        <span class="tag">16-bit signed Booth multiplier</span><span class="tag">Sequential array multiplier</span><span class="tag">Parameterizable restoring divider</span><span class="tag">UART TX / RX</span>
-        <p class="links" style="margin-top:8px"><a href="https://github.com/Zawaher-Bin-Asim/Restoring-Division">Divider code →</a></p>
+    <article class="project">
+      <div class="head"><div class="row"><h3>AXI4-Lite cache controller</h3><span class="meta">SystemVerilog</span></div></div>
+      <div class="body">
+        <div>
+          <p>An AXI4-Lite compliant cache controller, verified in a testbench against a memory model.</p>
+          <p class="links"><a href="https://github.com/Zawaher-Bin-Asim/Cache-Controller">View on GitHub →</a></p>
+        </div>
+        <figure class="diagram">
+          <svg viewBox="0 0 520 130" role="img" aria-labelledby="d3t d3d">
+            <title id="d3t">Cache controller setup</title>
+            <desc id="d3d">A requester talks to the cache controller, which talks over AXI4-Lite to a memory model in the testbench.</desc>
+            <rect class="bx" x="8" y="35" width="110" height="60" rx="6"/><text class="tx" x="63" y="70">Requester</text>
+            <rect class="bx a" x="190" y="25" width="140" height="80" rx="6"/><text class="tx" x="260" y="62">Cache</text><text class="tx" x="260" y="78">controller</text>
+            <rect class="bx" x="402" y="35" width="110" height="60" rx="6"/><text class="tx" x="457" y="62">Memory model</text><text class="ts" x="457" y="78">testbench</text>
+            <path class="ln" d="M118 65H190"/><path class="ln" d="M330 65H402"/><text class="tm" x="366" y="56">AXI4-Lite</text>
+          </svg>
+          <figcaption>Verification setup.</figcaption>
+        </figure>
       </div>
-    </div>
-  </article>
+    </article>
 
-  <h2 style="margin-top:44px">Industry work</h2>
-
-  <!-- 5. PCIe HDMA -->
-  <article class="project reverse">
-    <div class="head"><div class="row"><h3>PCIe Hyper DMA firmware</h3><span class="meta">C · RISC-V · Xcelerium</span></div></div>
-    <div class="body">
-      <div>
-        <p>Firmware for the PCIe Hyper DMA on a custom RISC-V SoC.</p>
-        <ul>
-          <li>Multi-channel transfers.</li>
-          <li>MSI interrupts for completion and error events.</li>
-          <li>Earlier work on PCIe Endpoint firmware and link training.</li>
-        </ul>
+    <article class="project">
+      <div class="head"><div class="row"><h3>Arithmetic and peripheral modules</h3><span class="meta">SystemVerilog · C++ · Python</span></div></div>
+      <div class="body" style="grid-template-columns:1fr">
+        <div>
+          <p>16-bit signed Booth multiplier, sequential array multiplier, parameterizable restoring divider, and a UART transmitter and receiver.</p>
+          <p class="links"><a href="https://github.com/Zawaher-Bin-Asim/Restoring-Division">Divider code →</a></p>
+        </div>
       </div>
-      <figure class="diagram">
-        <svg viewBox="0 0 520 190" role="img" aria-labelledby="d5t d5d">
-          <title id="d5t">PCIe HDMA firmware flow</title>
-          <desc id="d5d">Firmware programs multiple DMA channels, which transfer data over PCIe. Completion and error events raise MSI interrupts that reach an interrupt handler in firmware.</desc>
-          <rect class="bx" x="8" y="60" width="100" height="60" rx="8"/><text class="tx" x="58" y="86">Firmware</text><text class="ts" x="58" y="102">driver API</text>
-          <rect class="bx a" x="160" y="20" width="130" height="140" rx="8"/><text class="tx" x="225" y="42">HDMA</text>
-          <rect class="bx" x="174" y="54" width="102" height="26" rx="4"/><text class="ts" x="225" y="71">Channel 0</text>
-          <rect class="bx" x="174" y="86" width="102" height="26" rx="4"/><text class="ts" x="225" y="103">Channel 1</text>
-          <rect class="bx" x="174" y="118" width="102" height="26" rx="4"/><text class="ts" x="225" y="135">Channel n</text>
-          <rect class="bx b" x="400" y="20" width="110" height="60" rx="8"/><text class="tx" x="455" y="46">PCIe link</text><text class="ts" x="455" y="62">data transfer</text>
-          <rect class="bx b" x="400" y="110" width="110" height="60" rx="8"/><text class="tx" x="455" y="136">MSI</text><text class="ts" x="455" y="152">done / error</text>
-          <path class="ln" d="M108 90H160"/><path class="ln" d="M290 50H400"/><path class="ln d" d="M290 130H400"/>
-          <path class="ln d" d="M455 170V182H58V120"/>
-        </svg>
-        <figcaption>Simplified flow; interrupt returns to the firmware handler.</figcaption>
-      </figure>
-    </div>
-  </article>
+    </article>
 
-  <!-- 6. Multicore -->
-  <article class="project">
-    <div class="head"><div class="row"><h3>Bare-metal multi-core post-silicon test suite</h3><span class="meta">C · RISC-V atomics · Xcelerium</span></div></div>
-    <div class="body">
-      <div>
-        <p>A test suite that exercises peripherals, interrupts and shared memory on a multi-core RISC-V SoC.</p>
-        <ul>
-          <li>Peripheral tests and PLIC interrupt storms.</li>
-          <li>Cache-coherency workarounds.</li>
-          <li>Multi-core peripheral locking with spinlocks using AMO and LR/SC.</li>
-        </ul>
+    <h3 class="subhead">Industry work at Xcelerium</h3>
+
+    <article class="project reverse">
+      <div class="head"><div class="row"><h3>PCIe Hyper DMA firmware</h3><span class="meta">C · RISC-V</span></div></div>
+      <div class="body">
+        <div>
+          <p>Firmware for the PCIe Hyper DMA on a custom RISC-V SoC.</p>
+          <ul>
+            <li>Multi-channel transfers.</li>
+            <li>MSI interrupts for completion and error events.</li>
+            <li>Earlier work on PCIe Endpoint firmware and link training.</li>
+          </ul>
+        </div>
+        <figure class="diagram">
+          <svg viewBox="0 0 520 190" role="img" aria-labelledby="d5t d5d">
+            <title id="d5t">PCIe HDMA firmware flow</title>
+            <desc id="d5d">Firmware programs multiple DMA channels, which transfer data over PCIe. Completion and error events raise MSI interrupts that reach an interrupt handler in firmware.</desc>
+            <rect class="bx" x="8" y="60" width="100" height="60" rx="6"/><text class="tx" x="58" y="86">Firmware</text><text class="ts" x="58" y="102">driver API</text>
+            <rect class="bx a" x="160" y="20" width="130" height="140" rx="6"/><text class="tx" x="225" y="42">HDMA</text>
+            <rect class="bx" x="174" y="54" width="102" height="26" rx="3"/><text class="ts" x="225" y="71">Channel 0</text>
+            <rect class="bx" x="174" y="86" width="102" height="26" rx="3"/><text class="ts" x="225" y="103">Channel 1</text>
+            <rect class="bx" x="174" y="118" width="102" height="26" rx="3"/><text class="ts" x="225" y="135">Channel n</text>
+            <rect class="bx b" x="400" y="20" width="110" height="60" rx="6"/><text class="tx" x="455" y="46">PCIe link</text><text class="ts" x="455" y="62">data transfer</text>
+            <rect class="bx b" x="400" y="110" width="110" height="60" rx="6"/><text class="tx" x="455" y="136">MSI</text><text class="ts" x="455" y="152">done / error</text>
+            <path class="ln" d="M108 90H160"/><path class="ln" d="M290 50H400"/><path class="ln d" d="M290 130H400"/>
+            <path class="ln d" d="M455 170V182H58V120"/>
+          </svg>
+          <figcaption>Simplified flow; the interrupt returns to the firmware handler.</figcaption>
+        </figure>
       </div>
-      <figure class="diagram">
-        <svg viewBox="0 0 520 210" role="img" aria-labelledby="d6t d6d">
-          <title id="d6t">Multi-core peripheral locking</title>
-          <desc id="d6d">Several cores contend for a spinlock built on atomic instructions. The winner accesses a shared peripheral. The PLIC routes interrupts to the cores.</desc>
-          <rect class="bx" x="8" y="20" width="90" height="40" rx="6"/><text class="tx" x="53" y="45">Core 0</text>
-          <rect class="bx" x="8" y="85" width="90" height="40" rx="6"/><text class="tx" x="53" y="110">Core 1</text>
-          <rect class="bx" x="8" y="150" width="90" height="40" rx="6"/><text class="tx" x="53" y="175">Core n</text>
-          <rect class="bx a" x="190" y="65" width="130" height="80" rx="8"/><text class="tx" x="255" y="98">Spinlock</text><text class="tm" x="255" y="116">AMO · LR/SC</text>
-          <rect class="bx" x="410" y="20" width="100" height="60" rx="8"/><text class="tx" x="460" y="55">Peripheral</text>
-          <rect class="bx b" x="410" y="130" width="100" height="60" rx="8"/><text class="tx" x="460" y="165">PLIC</text>
-          <path class="ln" d="M98 40L190 85"/><path class="ln" d="M98 105H190"/><path class="ln" d="M98 170L190 125"/>
-          <path class="ln" d="M320 90L410 55"/>
-          <path class="ln d" d="M460 130V80" style="marker-end:none"/><path class="ln d" d="M410 160H98" style="stroke-opacity:.0"/>
-          <text class="tm" x="355" y="150">interrupts to cores</text>
-        </svg>
-        <figcaption>Cores contend for the lock before touching a shared peripheral.</figcaption>
-      </figure>
-    </div>
-  </article>
+    </article>
+
+    <article class="project">
+      <div class="head"><div class="row"><h3>Bare-metal multi-core post-silicon test suite</h3><span class="meta">C · RISC-V atomics</span></div></div>
+      <div class="body">
+        <div>
+          <p>A test suite that exercises peripherals, interrupts and shared memory on a multi-core RISC-V SoC.</p>
+          <ul>
+            <li>Peripheral tests and PLIC interrupt storms.</li>
+            <li>Cache-coherency workarounds.</li>
+            <li>Multi-core peripheral locking with spinlocks using AMO and LR/SC.</li>
+          </ul>
+        </div>
+        <figure class="diagram">
+          <svg viewBox="0 0 520 210" role="img" aria-labelledby="d6t d6d">
+            <title id="d6t">Multi-core peripheral locking</title>
+            <desc id="d6d">Several cores contend for a spinlock built on atomic instructions. The winner accesses a shared peripheral. The PLIC routes interrupts to the cores.</desc>
+            <rect class="bx" x="8" y="20" width="90" height="40" rx="5"/><text class="tx" x="53" y="45">Core 0</text>
+            <rect class="bx" x="8" y="85" width="90" height="40" rx="5"/><text class="tx" x="53" y="110">Core 1</text>
+            <rect class="bx" x="8" y="150" width="90" height="40" rx="5"/><text class="tx" x="53" y="175">Core n</text>
+            <rect class="bx a" x="190" y="65" width="130" height="80" rx="6"/><text class="tx" x="255" y="98">Spinlock</text><text class="tm" x="255" y="116">AMO · LR/SC</text>
+            <rect class="bx" x="410" y="20" width="100" height="60" rx="6"/><text class="tx" x="460" y="55">Peripheral</text>
+            <rect class="bx b" x="410" y="130" width="100" height="60" rx="6"/><text class="tx" x="460" y="165">PLIC</text>
+            <path class="ln" d="M98 40L190 85"/><path class="ln" d="M98 105H190"/><path class="ln" d="M98 170L190 125"/>
+            <path class="ln" d="M320 90L410 55"/>
+            <text class="tm" x="355" y="150">interrupts to cores</text>
+          </svg>
+          <figcaption>Cores contend for the lock before touching a shared peripheral.</figcaption>
+        </figure>
+      </div>
+    </article>
+  </div>
 </section>
 
 <section id="experience">
-  <p class="kicker">Experience</p>
-  <h2>Work history</h2>
-  <div class="tl">
-    <div class="item">
+  <div class="container">
+    <h2>Experience</h2>
+    <div class="job">
       <div class="row"><h3>Xcelerium, Lahore</h3><span class="meta">Jul 2024 – present</span></div>
-      <p class="meta" style="margin-bottom:4px">Associate Embedded Systems Engineer (Sep 2025 – present), after trainee and intern roles</p>
+      <p class="meta" style="margin:0">Associate Embedded Systems Engineer (Sep 2025 – present), after trainee and intern roles</p>
       <ul>
         <li>Developed SDK components (HAL and drivers) for the I2C, DMAC, GPIO, PLIC and PCIe controller IPs on a custom RISC-V SoC.</li>
         <li>Wrote firmware for the PCIe Hyper DMA with multi-channel transfers and MSI interrupts for completion and errors.</li>
@@ -387,29 +401,37 @@ footer{padding:36px 0 56px;color:var(--muted);font-size:.88rem;text-align:center
   </div>
 </section>
 
-<section id="education">
-  <p class="kicker">Education</p>
-  <h2>Academic background</h2>
-  <div class="card">
-    <div class="row"><h3>University of Engineering and Technology, Lahore</h3><span class="meta">2021 – 2025</span></div>
-    <p style="margin:6px 0 0">BE in Electrical and Electronics Engineering · CGPA 3.593 / 4.0 · Fully funded scholarship.</p>
+<section id="education" class="alt">
+  <div class="container">
+    <h2>Academic background</h2>
+    <div class="card edu">
+      <!-- Put the UET logo in the same folder and name it uet-logo.png (a transparent PNG works best). -->
+      <img src="uet-logo.png" alt="University of Engineering and Technology, Lahore logo" width="72" height="72" onerror="this.style.display='none'">
+      <div style="flex:1">
+        <div class="row"><h3>University of Engineering and Technology, Lahore</h3><span class="meta">2021 – 2025</span></div>
+        <p style="margin:4px 0 0">BE in Electrical and Electronics Engineering · CGPA 3.593 / 4.0 · Fully funded scholarship</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="contact">
-    <p class="kicker" style="color:#7fd6e8">Contact</p>
-    <h2>Let's talk</h2>
-    <p>I am happy to hear from PhD supervisors about research positions, and from engineering teams working on processors, SoCs and firmware.</p>
-    <a class="btn primary" href="mailto:zawaherbinasim.333@gmail.com">Email me</a>
-    <a class="btn ghost" href="https://github.com/Zawaher-Bin-Asim">GitHub</a>
-    <a class="btn ghost" href="https://www.linkedin.com/in/zawaher-bin-asim-293184283">LinkedIn</a>
-    <a class="btn ghost" href="Zawaher_Bin_Asim_Resume.pdf">Download CV (PDF)</a>
+  <div class="container">
+    <h2>Contact</h2>
+    <p style="max-width:560px">I am happy to hear from research groups, and from engineering teams working on processors, SoCs and firmware.</p>
+    <ul class="contact-list">
+      <li><span>Email</span><a href="mailto:zawaherbinasim.333@gmail.com">zawaherbinasim.333@gmail.com</a></li>
+      <li><span>GitHub</span><a href="https://github.com/Zawaher-Bin-Asim">github.com/Zawaher-Bin-Asim</a></li>
+      <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/zawaher-bin-asim-293184283">zawaher-bin-asim</a></li>
+      <li><span>CV</span><a href="Zawaher_Bin_Asim_Resume.pdf">Download (PDF)</a></li>
+    </ul>
   </div>
 </section>
 
 </main>
 
-<footer>Zawaher Bin Asim · Lahore, Pakistan</footer>
+<footer>
+  <div class="container">Zawaher Bin Asim · Lahore, Pakistan</div>
+</footer>
 </body>
 </html>
